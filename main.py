@@ -1,20 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# batman = np.array([[0, 0], [1, 0.2], [0.4, 1], [0.5, 0.4], [0, 0.8], [-0.5, 0.4], [-0.4, 1], [-1, 0.2], [0, 0]])
-
-batman = np.array([
-   [0, 0], [0, 0.75],
-   [0, 0.75], [0.75, 0],
-   [0.75, 0], [-0.75, 0],
-   [0.75, 0.75], [0, -0.75]
-   ])
+batman = np.array([[0, 0], [1, 0.2], [0.4, 1], [0.5, 0.4], [0, 0.8], [-0.5, 0.4], [-0.4, 1], [-1, 0.2], [0, 0]])
+star = np.array([[-0.5, 0], [0, 1.5], [0.5, 0], [-0.5, 1], [0.5, 1], [-0.5, 0]])
 
 plt.figure()
 
-for i in range(0, len(batman)-1, 2):
-    plt.quiver(batman[i][0], batman[i][1], batman[i+1][0], batman[i+1][1], angles='xy', scale_units='xy', scale=1, color='g')
-
+plt.plot(batman[:, 0], batman[:, 1], 'g')
+plt.plot(star[:, 0], star[:, 1], 'b')
 
 plt.xlim(-2, 2)
 plt.ylim(-2, 2)
