@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 
 def rotate(object, angle):
     angle = np.radians(angle)
-    rotation_matrix = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+    rotation_matrix = np.array([
+                                [np.cos(angle), -np.sin(angle)],
+                                [np.sin(angle),  np.cos(angle)]
+                                ])
     return np.dot(object, rotation_matrix)
 
 
@@ -12,8 +15,39 @@ def scale(object, coefficient):
     return object * coefficient
 
 
-batman = np.array([[0, 0], [1, 0.2], [0.4, 1], [0.5, 0.4], [0, 0.8], [-0.5, 0.4], [-0.4, 1], [-1, 0.2], [0, 0]])
-star = np.array([[0, 0], [0.5, 1.5], [1, 0], [0, 1], [1, 1], [0, 0]])
+def reflect(object, mirror_axis):
+    if mirror_axis == "x":
+        reflect_object = np.array([
+                                   [1,  0],
+                                   [0, -1]
+                                   ])
+    else:
+        reflect_object = np.array([
+                                   [-1, 0],
+                                   [0,  1]
+                                   ])
+    return np.dot(object, reflect_object)
+
+
+batman = np.array([
+                   [0,       0],
+                   [1,     0.2],
+                   [0.4,     1],
+                   [0.5,   0.4],
+                   [0,     0.8],
+                   [-0.5,  0.4],
+                   [-0.4,    1],
+                   [-1,    0.2],
+                   [0,       0]
+                   ])
+star = np.array([
+                 [0,     0],
+                 [0.5, 1.5],
+                 [1,     0],
+                 [0,     1],
+                 [1,     1],
+                 [0,     0]
+                 ])           # подібний запис тільки для зручності сприйняття матриці
 
 plt.figure()
 
@@ -37,5 +71,11 @@ plt.grid(True)
 
 # scale_star = scale(star, 0.5)
 # plt.plot(scale_star[:, 0], scale_star[:, 1], 'g')
+
+reflect_batman = reflect(batman, "x")
+plt.plot(reflect_batman[:, 0], reflect_batman[:, 1], 'b')
+
+reflect_star = reflect(star, "y")
+plt.plot(reflect_star[:, 0], reflect_star[:, 1], 'g')
 
 plt.show()
