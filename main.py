@@ -8,10 +8,14 @@ def rotate(object, angle):
                                 [np.cos(angle), -np.sin(angle)],
                                 [np.sin(angle),  np.cos(angle)]
                                 ])
+
+    print(np.dot(object, rotation_matrix))
+
     return np.dot(object, rotation_matrix)
 
 
 def scale(object, coefficient):
+    print(object * coefficient)
     return object * coefficient
 
 
@@ -26,6 +30,9 @@ def reflect(object, mirror_axis):
                                    [-1, 0],
                                    [0,  1]
                                    ])
+
+    print(np.dot(object, reflect_object))
+
     return np.dot(object, reflect_object)
 
 
@@ -41,6 +48,9 @@ def tilt(object, angle, axis):
                                 [1, 0],
                                 [np.tan(angle), 1]
                                 ])
+
+    print(np.dot(object, tilt_matrix))
+
     return np.dot(object, tilt_matrix)
 
 
@@ -93,10 +103,10 @@ plt.grid(True)
 # rotate_star = rotate(star, 180)
 # plt.plot(rotate_star[:, 0], rotate_star[:, 1], 'g')
 
-tilt_batman = tilt(batman, 45, "x")
-plt.plot(tilt_batman[:, 0], tilt_batman[:, 1], 'b')
+# tilt_batman = tilt(batman, 45, "x")
+# plt.plot(tilt_batman[:, 0], tilt_batman[:, 1], 'b')
 
-tilt_star = tilt(star, 15, "y")
-plt.plot(tilt_star[:, 0], tilt_star[:, 1], 'g')
+# tilt_star = tilt(star, 15, "y")
+# plt.plot(tilt_star[:, 0], tilt_star[:, 1], 'g')
 
 plt.show()
