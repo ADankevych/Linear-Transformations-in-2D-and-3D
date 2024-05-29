@@ -29,6 +29,21 @@ def reflect(object, mirror_axis):
     return np.dot(object, reflect_object)
 
 
+def tilt(object, angle, axis):
+    angle = np.radians(angle)
+    if axis == "x":
+        tilt_matrix = np.array([
+                                [1, np.tan(angle)],
+                                [0, 1]
+                                ])
+    else:
+        tilt_matrix = np.array([
+                                [1, 0],
+                                [np.tan(angle), 1]
+                                ])
+    return np.dot(object, tilt_matrix)
+
+
 batman = np.array([
                    [0,       0],
                    [1,     0.2],
@@ -72,10 +87,16 @@ plt.grid(True)
 # scale_star = scale(star, 0.5)
 # plt.plot(scale_star[:, 0], scale_star[:, 1], 'g')
 
-reflect_batman = reflect(batman, "x")
-plt.plot(reflect_batman[:, 0], reflect_batman[:, 1], 'b')
+# reflect_batman = reflect(batman, "x")
+# plt.plot(reflect_batman[:, 0], reflect_batman[:, 1], 'b')
 
-reflect_star = reflect(star, "y")
-plt.plot(reflect_star[:, 0], reflect_star[:, 1], 'g')
+# rotate_star = rotate(star, 180)
+# plt.plot(rotate_star[:, 0], rotate_star[:, 1], 'g')
+
+tilt_batman = tilt(batman, 45, "x")
+plt.plot(tilt_batman[:, 0], tilt_batman[:, 1], 'b')
+
+tilt_star = tilt(star, 15, "y")
+plt.plot(tilt_star[:, 0], tilt_star[:, 1], 'g')
 
 plt.show()
