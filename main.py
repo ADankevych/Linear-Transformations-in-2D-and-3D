@@ -15,8 +15,12 @@ def rotate(object, angle):
 
 
 def scale(object, coefficient):
-    print(object * coefficient)
-    return object * coefficient
+    scale_matrix = np.array([
+                             [coefficient, 0],
+                             [0, coefficient]
+                             ])
+    print(np.dot(object, scale_matrix))
+    return np.dot(object, scale_matrix)
 
 
 def reflect(object, mirror_axis):
