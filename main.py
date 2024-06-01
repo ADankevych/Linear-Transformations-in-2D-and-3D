@@ -19,7 +19,9 @@ def scale(object, coefficient):
                              [coefficient, 0],
                              [0, coefficient]
                              ])
+
     print(np.dot(object, scale_matrix))
+
     return np.dot(object, scale_matrix)
 
 
@@ -56,6 +58,17 @@ def tilt(object, angle, axis):
     print(np.dot(object, tilt_matrix))
 
     return np.dot(object, tilt_matrix)
+
+
+def universal(object, rotate_angle, scale_coefficient, reflect_axis, tilt_angle, tilt_axis):
+    object = rotate(object, rotate_angle)
+    object = scale(object, scale_coefficient)
+    object = reflect(object, reflect_axis)
+    object = tilt(object, tilt_angle, tilt_axis)
+
+    print(object)
+
+    return object
 
 
 batman = np.array([
@@ -112,5 +125,12 @@ plt.grid(True)
 
 # tilt_star = tilt(star, 15, "y")
 # plt.plot(tilt_star[:, 0], tilt_star[:, 1], 'g')
+
+# universal_batman = universal(batman, 90, 1.5, "x", 45, "x")
+# plt.plot(universal_batman[:, 0], universal_batman[:, 1], 'b')
+
+# universal_star = universal(star, 180, 0.5, "y", 15, "y")
+# plt.plot(universal_star[:, 0], universal_star[:, 1], 'g')
+
 
 plt.show()
