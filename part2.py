@@ -23,6 +23,9 @@ plt.plot(rotate_matrix[:, 0], rotate_matrix[:, 1], 'r')
 scaled_matrix = cv2.resize(batman, (0, 0), fx=1.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
 plt.plot(scaled_matrix[:, 0], scaled_matrix[:, 1], 'g')
 
+flipped_matrix = np.flip(batman, axis=1)
+plt.plot(flipped_matrix[:, 0], flipped_matrix[:, 1], 'y')
+
 plt.xlim(-2, 2)
 plt.ylim(-2, 2)
 plt.axhline(0, color='k', linestyle='-', linewidth=0.5)
