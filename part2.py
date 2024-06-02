@@ -2,6 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 
+image = cv2.imread('image.png')
+
+cv2.imshow('Original', image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+rotated_image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+
+scaled_image = cv2.resize(image, None, fx=5, fy=5)
+
+cv2.imshow('Rotated', rotated_image)
+cv2.imshow('Scaled', scaled_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+"""
 batman = np.array([
     [0, 0],
     [1, 0.2],
@@ -33,3 +49,4 @@ plt.axvline(0, color='k', linestyle='-', linewidth=0.5)
 plt.grid(True)
 
 plt.show()
+"""
