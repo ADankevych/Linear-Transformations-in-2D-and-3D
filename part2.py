@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.ndimage import zoom
+import cv2
 
 batman = np.array([
     [0, 0],
@@ -20,7 +20,7 @@ rotate_matrix = np.rot90(batman, 2)
 plt.plot(batman[:, 0], batman[:, 1], 'b')
 plt.plot(rotate_matrix[:, 0], rotate_matrix[:, 1], 'r')
 
-scaled_matrix = zoom(batman, [1.5, 1.5])
+scaled_matrix = cv2.resize(batman, (0, 0), fx=1.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
 plt.plot(scaled_matrix[:, 0], scaled_matrix[:, 1], 'g')
 
 plt.xlim(-2, 2)
